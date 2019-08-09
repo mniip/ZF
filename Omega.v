@@ -61,14 +61,14 @@ Proof.
     intros x ? ? y z ? [ | <-]; eauto.
 Qed.
 
-Local Lemma omega_not_in_self : forall x, x in omega -> ~(x in x).
+Theorem omega_not_in_self : forall x, x in omega -> ~(x in x).
 Proof.
   apply omega_strong_ind.
   intros x ? IH ?.
   apply (IH x); auto.
 Qed.
 
-Local Lemma omega_not_in_eachother : forall x y, x in omega -> y in omega -> ~(x in y /\ y in x).
+Theorem omega_not_in_eachother : forall x y, x in omega -> y in omega -> ~(x in y /\ y in x).
 Proof.
   intros x y ? ? [].
   apply (omega_not_in_self x); auto.

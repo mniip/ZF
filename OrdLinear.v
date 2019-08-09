@@ -108,7 +108,7 @@ Proof.
   intros x IH.
   set (acc := in_accessible x).
   destruct acc as [acc].
-  replace acc with (fun y (p : y in x) => in_accessible y). 2:{ apply uip. }
+  replace acc with (fun y (p : y in x) => in_accessible y). 2:{ apply prop_ext. }
   apply set_ext. intros z.
   simpl. unsettle. firstorder.
   + rewrite IH in H; subst; auto.

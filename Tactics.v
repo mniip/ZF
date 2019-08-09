@@ -59,12 +59,12 @@ Proof.
   + apply set_repl in p as [y [q i]].
     exists y. exists q.
     set (s := classic (y in x)) in i. destruct s; try contradiction.
-    erewrite (uip q). eauto.
+    erewrite (prop_ext q). eauto.
   + destruct p as [y [q i]]. 
     apply set_repl.
     exists y. split; auto.
     set (s := classic (y in x)). destruct s; try contradiction.
-    erewrite (uip q) in i. eauto.
+    erewrite (prop_ext q) in i. eauto.
 Qed.
 
 Ltac inclusion_goal := lazymatch goal with

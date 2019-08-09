@@ -44,3 +44,12 @@ Definition dep_repl x (F : forall y, y in x -> set) := c_repl x (fun y => match 
   end).
 
 Definition dep_specif x (P : forall y, y in x -> Prop) := c_specif x (fun y => exists (p : y in x), P y p).
+
+Theorem function_comprehension (P : set -> set -> Prop) : (forall x, exists! y, P x y) -> sig (fun f => forall x, P x (f x)).
+Proof.
+  intros u.
+  exists (fun x => @the _ (fun y => P x y) (u x)).
+  intros x. unfold the.
+  set (t := definite_description _ _).
+  destruct t. auto.
+Qed.

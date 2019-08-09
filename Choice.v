@@ -279,17 +279,6 @@ Proof.
       apply (e x); auto.
 Qed.
 
-Section well_ordering_choice.
-
-Local Theorem function_comprehension (P : set -> set -> Prop) : (forall x, exists! y, P x y) -> sig (fun f => forall x, P x (f x)).
-Proof.
-  intros u.
-  exists (fun x => @the _ (fun y => P x y) (u x)).
-  intros x. unfold the.
-  set (t := definite_description _ _).
-  destruct t. auto.
-Qed.
-
 Theorem well_ordering_choice : WellOrdering -> Choice.
 Proof.
   intros wo A ex.
@@ -309,5 +298,3 @@ Proof.
   exists F. intros X ?. specialize (pF X).
   set (s := classic (X in A)) in *. destruct s; intuition.
 Qed.
-
-End well_ordering_choice.

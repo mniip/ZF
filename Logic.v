@@ -1,6 +1,8 @@
 Axiom classic : forall (P : Prop), {P} + {~P}.
 
-Axiom uip : forall {P : Prop} (p q : P), p = q.
+Axiom prop_ext : forall {P : Prop} (p q : P), p = q.
+
+Axiom fun_ext : forall {X Y} (f g : X -> Y), (forall x, f x = g x) -> f = g.
 
 Theorem not_not_elim P : ~~P -> P.
 Proof. destruct (classic P); intuition. Qed.
